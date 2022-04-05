@@ -9,7 +9,4 @@ def search():
     }
     r = requests.get(OLX_URL_BASE, headers=headers)
     soup = BeautifulSoup(r.content, 'html.parser')
-    
-    file = open('page.html','w')
-    file.write(str(soup.find_all('ul')))
-    file.close()
+    print(soup.title)
