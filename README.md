@@ -32,4 +32,5 @@
 
 |*Operação*|*HTTP Method*| *URI*|
 |--|--|--|
-| Criar uma nova busca | POST | /api/v1/search
+| Buscar último imóvel em João Pessoa | GET | /search
+| Buscar último imóvel da cidade {city} e bairro {district} | GET | /search/{city}/{district}
