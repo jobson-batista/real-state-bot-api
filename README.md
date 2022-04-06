@@ -9,20 +9,21 @@
 
 ### ✅ Features
 
- - [ ] Cadastrar busca
+ - [x] Buscar último imóvel cadastrado na olx
+ - [x] Filtrar busca por cidade e bairro
 
 ### ✅ Passos para executar o projeto
 
 - Entrar na raiz do projeto.
 - Criar um ambiente virtual com python usando o comando:`python3 -m venv env`
-- Depois ativar o ambiente
-		- No Linux: `source env/bin/activate`
-		- No Windows: `env/Scripts/Activate`
+- Ativar o ambiente virtual
+	- No Linux: `source env/bin/activate`
+	- No Windows: `env/Scripts/Activate`
 - Instalar as dependências: `pip install -r requirements.txt`
 - Definir uma variável de ambiente
-		- No linux: `export FLASK_APP=app`
-		- No CMD: `set FLASK_APP=app`
-		- No Powershell: `$env:FLASK_APP = app`
+	- No linux: `export FLASK_APP=app`
+	- No CMD: `set FLASK_APP=app`
+	- No Powershell: `$env:FLASK_APP = src/app`
 - Por fim executar o comando: `flask run`
 
 ### ✅ Principais Endpoints
@@ -31,4 +32,5 @@
 
 |*Operação*|*HTTP Method*| *URI*|
 |--|--|--|
-| Criar uma nova busca | POST | /api/v1/search
+| Buscar último imóvel em João Pessoa | GET | /search
+| Buscar último imóvel da cidade {city} e bairro {district} | GET | /search/{city}/{district}
