@@ -1,5 +1,5 @@
 from flask import Flask
-from services import web_scraping_service as ws
+from src.services import web_scraping_service as ws
 import json
 
 APP = Flask(__name__)
