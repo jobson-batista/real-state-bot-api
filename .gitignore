@@ -1,7 +1,9 @@
 # Environment
 
 env_bot/
+env/
 
 # Flask
 
 src/__pycache__/
+services/__pycache__/
