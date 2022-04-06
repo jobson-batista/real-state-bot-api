@@ -14,7 +14,7 @@
 ### ✅ Passos para executar o projeto
 
 - Entrar na raiz do projeto.
-- Criar um ambiente virtual com python usando o comando:`python3 -m venv env.`
+- Criar um ambiente virtual com python usando o comando:`python3 -m venv env`
 - Depois ativar o ambiente
 		- No Linux: `source env/bin/activate`
 		- No Windows: `env/Scripts/Activate`
