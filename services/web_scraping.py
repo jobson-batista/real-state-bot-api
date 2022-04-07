@@ -31,3 +31,15 @@ def search_last_ad(city='',district=''):
     last_ad["price"] = ad_list[0]["price"].split(" ")[1]
 
     return json.dumps(last_ad)
+
+def get_districts_filter_olx():
+    districts = {}
+    URL = OLX_URL_BASE +'imoveis'
+    r = requests.get(URL, headers=headers)
+    soup = BeautifulSoup(r.content, 'html.parser')
+    data_general = soup.find(id='initial-data').get('data-json')
+    locations = json.loads(data_general)['listingProps']['dataContext']
+    print(len(locations))
+    '''for k in locations:
+        districts[k.lower().replace(' ','-')] = k '''
+    return districts
