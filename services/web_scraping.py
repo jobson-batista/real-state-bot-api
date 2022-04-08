@@ -30,3 +30,24 @@ def search_last_ad(city='',district=''):
     last_ad["price"] = ad_list[0]["price"].split(" ")[1]
 
     return json.dumps(last_ad)
+
+def get_districts(city):
+    districts = []
+    if(city == ''):
+        URL = OLX_URL_BASE + '/joao-pessoa/imoveis'
+    else:
+        URL = OLX_URL_BASE + '/'+city +'/imoveis'
+    print(URL)
+    try:
+        r = requests.get(URL, headers=headers)
+        print("\nURL Request: "+r.url+"\n")
+    except requests.ConnectionError as e:
+        print("Erro ao fazer requisição!\n",e)
+    soup = BeautifulSoup(r.content, 'html.parser')
+    data_general = soup.find(id='initial-data').get('data-json')
+    locations = json.loads(data_general)['listingProps']['dataContext']['locations']
+    for loc in locations:
+        loc_dict = {}
+        loc_dict[loc['friendlyName']] = loc['name']
+        districts.append(loc_dict)
+    return districts
