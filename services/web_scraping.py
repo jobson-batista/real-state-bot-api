@@ -38,7 +38,6 @@ def get_districts(city):
         URL = OLX_URL_BASE + '/joao-pessoa/imoveis'
     else:
         URL = OLX_URL_BASE + '/'+city +'/imoveis'
-    print(URL)
     try:
         r = requests.get(URL, headers=headers)
         print("\nURL Request: "+r.url+"\n")
