@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-import services.web_scraping as ws
+from services import web_scraping as ws, telegram
 import json
 
 app = Flask(__name__)
@@ -18,6 +18,10 @@ def search_by_city_district():
         res.append(json.loads(ad))
     return jsonify(res)        
 
-@app.route("/<string:city>/districts")
+@app.route("/<string:city>/districts", methods=['GET'])
 def find_all_districts(city):
     return jsonify(ws.get_districts(city))
+
+@app.route("/sendAd", methods=['POST'])
+def send_ad():
+    return telegram.send_ad(request.data)
