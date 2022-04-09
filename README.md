@@ -36,4 +36,5 @@
 |*Operação*|*HTTP Method*| *URI*|
 |--|--|--|
 | Buscar último imóvel em João Pessoa | GET | /search
-| Buscar último imóvel da cidade {city} e bairro {district} | GET | /search/{city}/{district}
+| Buscar último imóvel da cidade {city} e bairro {district} | GET | /search?city=joao-pessoa&district=aeroclube
+| Obter lista de bairros de uma cidade | GET | /{city}/districts
