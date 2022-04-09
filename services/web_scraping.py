@@ -10,7 +10,7 @@ def search_last_ad(city='',district=''):
     URL = OLX_URL_BASE
     last_ad = {}
     if(city != '' and district != ''):
-        URL = URL+city+'/'+district+'/imoveis'
+        URL = URL+'/'+city+'/'+district+'/imoveis'
     else:
         URL = URL+'imoveis'
     try:
