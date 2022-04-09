@@ -40,3 +40,4 @@
 | Buscar último imóvel em João Pessoa | GET | /search
 | Buscar último imóvel da cidade {city} e bairro {district} | GET | /search?city=joao-pessoa&district=aeroclube
 | Obter lista de bairros de uma cidade | GET | /{city}/districts
+| Enviar um anúncio para o grupo no telegram | POST | /sendAd
