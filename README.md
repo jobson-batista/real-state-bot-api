@@ -13,7 +13,9 @@
 ### ✅ Features
 
  - [x] Buscar último imóvel cadastrado na olx
- - [x] Filtrar busca por cidade e bairro
+ - [x] Filtrar busca por cidade e bairros
+ - [x] Enviar anúncio para o telegram
+ - [x] Obter todos os bairros de uma cidade
 
 ### ✅ Passos para executar o projeto localmente
 
