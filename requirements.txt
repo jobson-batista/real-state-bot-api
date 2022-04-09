@@ -11,6 +11,7 @@ importlib-metadata==4.11.3
 itsdangerous==2.1.2
 Jinja2==3.1.1
 MarkupSafe==2.1.1
+pyTelegramBotAPI==4.4.0
 python-dotenv==0.20.0
 pytz==2022.1
 requests==2.27.1
