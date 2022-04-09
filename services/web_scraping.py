@@ -12,9 +12,10 @@ def search_last_ad(city='',district=''):
     if(city != '' and district != ''):
         URL = URL+'/'+city+'/'+district+'/imoveis'
     else:
-        URL = URL+'imoveis'
+        URL = URL+'/imoveis'
     try:
         r = requests.get(URL, headers=headers)
+        print(URL)
         print("\nURL Request: "+r.url+"\n")
     except requests.ConnectionError as e:
         print("Erro ao fazer requisição!\n",e)
@@ -48,6 +49,7 @@ def get_districts(city):
     locations = json.loads(data_general)['listingProps']['dataContext']['locations']
     for loc in locations:
         loc_dict = {}
-        loc_dict[loc['friendlyName']] = loc['name']
-        districts.append(loc_dict)
+        if(loc['friendlyName'] != 'joao-pessoa'):
+            loc_dict[loc['friendlyName']] = loc['name']
+            districts.append(loc_dict)
     return districts
