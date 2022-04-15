@@ -1,4 +1,5 @@
 from flask import jsonify, request, Blueprint
+from requests import Response
 from ..services import web_scraping as ws, telegram
 import json
 
@@ -25,3 +26,8 @@ def find_all_districts(city):
 @blueprint.route("/sendAd", methods=['POST'])
 def send_ad():
     return telegram.send_ad(request.data)
+
+@blueprint.route("/create", methods=['POST'])
+def create_search():
+    ws.create_search(request.get_json()['city'], request.get_json()['districts'])
+    return "Salvo"

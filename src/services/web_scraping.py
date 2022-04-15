@@ -1,6 +1,9 @@
 import requests, json, os
 from bs4 import BeautifulSoup
 
+from ..models.models import Search
+from ..database.database import db_session
+
 OLX_URL_BASE = os.environ.get('OLX_BASE')
 headers = {
     'user-agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36'
@@ -52,3 +55,15 @@ def get_districts(city):
             loc_dict[loc['friendlyName']] = loc['name']
             districts.append(loc_dict)
     return districts
+
+
+def create_search(city, districts):
+    districts_formated = ""
+    for dis in districts:
+        districts_formated = districts_formated + ";" + dis
+    search = Search(city, districts_formated)
+    db_session.add(search)
+    db_session.commit()
+
+def get_all_search():
+    return Search.query.all()
