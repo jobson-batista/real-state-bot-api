@@ -8,3 +8,5 @@ env/
 src/__pycache__/
 services/__pycache__/
 __pycache__/
+.env
+env/
