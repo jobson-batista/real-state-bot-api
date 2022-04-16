@@ -1,5 +1,7 @@
+from flask import jsonify
 import requests, json, os
 from bs4 import BeautifulSoup
+import json
 
 from ..models.models import Search
 from ..database.database import db_session
@@ -60,10 +62,34 @@ def get_districts(city):
 def create_search(city, districts):
     districts_formated = ""
     for dis in districts:
-        districts_formated = districts_formated + ";" + dis
-    search = Search(city, districts_formated)
-    db_session.add(search)
-    db_session.commit()
+        for k in dis:
+            districts_formated = k + ";" + districts_formated
+    try:
+        search = Search(city, districts_formated)
+        db_session.add(search)
+        db_session.commit()
+        return {"message":"Busca cadastrada com sucesso!"}
+    except:
+        return {"message":"Erro ao criar busca."}
 
-def get_all_search():
-    return Search.query.all()
+def delete_search_by_id(id):
+    try:
+        db_session.query(Search).filter(Search.id==id).delete()
+        db_session.commit()
+        return {"message":"Busca removida com sucesso!"}
+    except:
+        return {"message":"Erro ao remover busca."}
+    
+def find_all_search():
+    searchs_json = []
+    try:
+        searchs = db_session.query(Search).all()
+        for s in searchs:
+            json = {}
+            json['city'] = s.city
+            json['districts'] = s.districts
+            json['id'] = s.id
+            searchs_json.append(json)
+        return jsonify(searchs_json)
+    except:
+        return {"message":"Erro ao obter buscas."}
