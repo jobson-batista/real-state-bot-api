@@ -1,5 +1,4 @@
 from flask import jsonify, request, Blueprint
-from requests import Response
 from ..services import web_scraping as ws, telegram
 import json
 
